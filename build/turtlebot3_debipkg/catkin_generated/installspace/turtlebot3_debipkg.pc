@@ -1,0 +1,8 @@
+prefix=/home/rama2/catkin_ws/install
+
+Name: turtlebot3_debipkg
+Description: Description of turtlebot3_debipkg
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
