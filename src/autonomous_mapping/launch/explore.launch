@@ -1,0 +1,13 @@
+<launch>
+  <arg name="slam_method" default="gmapping"/>
+    <!-- Turtlebot3 Navigation -->
+  <include file="$(find turtlebot3_navigation)/launch/move_base.launch">
+  </include>
+    <!-- Turtlebot3 SLAM -->
+  <include file="$(find turtlebot3_slam)/launch/turtlebot3_slam.launch">
+    <arg name="slam_methods" value="gmapping" />
+    <arg name="open_rviz" value="false" />
+  </include>
+  <!-- Node for autonomous mapping -->
+  <node name="explore_node" pkg="explore_node" type="explore.py" output="screen"/>
+</launch>
