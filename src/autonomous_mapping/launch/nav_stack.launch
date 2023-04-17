@@ -1,0 +1,6 @@
+<launch>
+    <!-- turtlebot3_navigation -->
+    <include file="$(find turtlebot3_navigation)/launch/turtlebot3_navigation.launch" >
+        <arg name="map_file" value="$(find autonomous_mapping)/maps/map.yaml" />
+    </include>
+</launch>

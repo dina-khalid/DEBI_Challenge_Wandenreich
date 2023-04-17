@@ -1,2 +1,0 @@
-turtlebot3_debipkg
--DCATKIN_DEVEL_PREFIX=/home/rama2/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/rama2/catkin_ws/install -G Unix Makefiles
