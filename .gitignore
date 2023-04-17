@@ -1,0 +1,13 @@
+# Ignore the build and devel folders in the workspace
+build/
+devel/
+
+# Ignore hidden files
+.*
+
+# Ignore some common files
+*.pyc
+*.pyo
+*.so
+*.swp
+*~
