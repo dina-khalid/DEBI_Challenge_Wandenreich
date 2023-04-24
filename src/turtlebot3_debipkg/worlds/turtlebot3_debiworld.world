@@ -157,14 +157,14 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
+                <mu>0.01</mu>
+                <mu2>0.01</mu2>
                 <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <slip1>0.99</slip1>
+                <slip2>0.99</slip2>
               </ode>
               <torsional>
-                <coefficient>1</coefficient>
+                <coefficient>0.2</coefficient>
                 <patch_radius>0</patch_radius>
                 <surface_radius>0</surface_radius>
                 <use_patch_radius>1</use_patch_radius>
@@ -255,14 +255,14 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
+                <mu>0.01</mu>
+                <mu2>0.01</mu2>
                 <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <slip1>0.99</slip1>
+                <slip2>0.99</slip2>
               </ode>
               <torsional>
-                <coefficient>1</coefficient>
+                <coefficient>0.2</coefficient>
                 <patch_radius>0</patch_radius>
                 <surface_radius>0</surface_radius>
                 <use_patch_radius>1</use_patch_radius>
@@ -353,14 +353,14 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
+                <mu>0.01</mu>
+                <mu2>0.01</mu2>
                 <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <slip1>0.99</slip1>
+                <slip2>0.99</slip2>
               </ode>
               <torsional>
-                <coefficient>1</coefficient>
+                <coefficient>0.2</coefficient>
                 <patch_radius>0</patch_radius>
                 <surface_radius>0</surface_radius>
                 <use_patch_radius>1</use_patch_radius>
@@ -451,14 +451,14 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
+                <mu>0.01</mu>
+                <mu2>0.01</mu2>
                 <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <slip1>0.99</slip1>
+                <slip2>0.99</slip2>
               </ode>
               <torsional>
-                <coefficient>1</coefficient>
+                <coefficient>0.2</coefficient>
                 <patch_radius>0</patch_radius>
                 <surface_radius>0</surface_radius>
                 <use_patch_radius>1</use_patch_radius>
@@ -549,14 +549,14 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
+                <mu>0.01</mu>
+                <mu2>0.01</mu2>
                 <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <slip1>0.99</slip1>
+                <slip2>0.99</slip2>
               </ode>
               <torsional>
-                <coefficient>1</coefficient>
+                <coefficient>0.2</coefficient>
                 <patch_radius>0</patch_radius>
                 <surface_radius>0</surface_radius>
                 <use_patch_radius>1</use_patch_radius>
@@ -647,14 +647,14 @@
           <surface>
             <friction>
               <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
+                <mu>0.01</mu>
+                <mu2>0.01</mu2>
                 <fdir1>0 0 0</fdir1>
-                <slip1>0</slip1>
-                <slip2>0</slip2>
+                <slip1>0.99</slip1>
+                <slip2>0.99</slip2>
               </ode>
               <torsional>
-                <coefficient>1</coefficient>
+                <coefficient>0.2</coefficient>
                 <patch_radius>0</patch_radius>
                 <surface_radius>0</surface_radius>
                 <use_patch_radius>1</use_patch_radius>
@@ -1382,45 +1382,45 @@
       <pose>0.201618 0.978439 -0.001007 -3e-06 0.003179 4.2e-05</pose>
     </model>
     <state world_name='default'>
-      <sim_time>11 863000000</sim_time>
-      <real_time>14 771199623</real_time>
-      <wall_time>1680907588 922840467</wall_time>
-      <iterations>11863</iterations>
+      <sim_time>268 557000000</sim_time>
+      <real_time>259 160597039</real_time>
+      <wall_time>1681850257 482082079</wall_time>
+      <iterations>256694</iterations>
       <model name='Balls'>
-        <pose>0.853349 -0.821762 0.5 0 -0 0</pose>
+        <pose>0.107347 -0.376255 0.024332 -0.006334 0.012121 -3.8e-05</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
-          <pose>0.821722 -1.26148 0.5 0 -0 0</pose>
+          <pose>0.075739 -0.815963 0.0275 -0.006334 0.012121 -3.8e-05</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
         <link name='link_0_clone'>
-          <pose>0.439894 -1.50285 0.5 0 -0 0</pose>
+          <pose>-0.306089 -1.05733 0.0275 -0.006334 0.012121 -3.8e-05</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
         <link name='link_0_clone_0'>
-          <pose>0.507123 0.02556 0.5 0 -0 0</pose>
+          <pose>-0.23886 0.471077 0.0275 -0.006334 0.012121 -3.8e-05</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
         <link name='link_0_clone_clone'>
-          <pose>1.47095 -1.61642 0.5 0 -0 0</pose>
+          <pose>0.724967 -1.1709 0.0275 -0.006334 0.012121 -3.8e-05</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
         <link name='link_0_clone_clone_0'>
-          <pose>1.12112 -0.255233 0.5 0 -0 0</pose>
+          <pose>0.375137 0.190284 0.0275 -0.006334 0.012121 -3.8e-05</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
         <link name='link_0_clone_clone_clone'>
-          <pose>0.759287 -0.320147 0.5 0 -0 0</pose>
+          <pose>0.013304 0.125403 0.0275 -0.006901 0.012145 -3.9e-05</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -1471,24 +1471,24 @@
         </link>
       </model>
       <model name='turtlebot3_waffle_pi_clone'>
-        <pose>0.201618 0.978439 -0.001007 -3e-06 0.003179 4.2e-05</pose>
+        <pose>0.201672 0.97859 -0.001007 -3e-06 0.003179 0.000985</pose>
         <scale>1 1 1</scale>
         <link name='base_footprint'>
-          <pose>0.201618 0.978439 -0.001007 -3e-06 0.003179 4.2e-05</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
+          <pose>0.201672 0.97859 -0.001007 -3e-06 0.003179 0.000985</pose>
+          <velocity>1e-06 1e-06 4.4e-05 -4.9e-05 -0.000211 8e-06</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
         <link name='wheel_left_link'>
-          <pose>0.201717 1.12244 0.031992 -1.57 0.003179 4.2e-05</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
+          <pose>0.201636 1.12259 0.031992 -1.57001 0.000767 0.000983</pose>
+          <velocity>-7e-06 2e-06 3.7e-05 -5.5e-05 -0.000224 8e-06</velocity>
+          <acceleration>-0 0 0 0 -0 0</acceleration>
+          <wrench>-0 0 0 0 -0 0</wrench>
         </link>
         <link name='wheel_right_link'>
-          <pose>0.201729 0.834439 0.031993 -1.57 0.003179 4.2e-05</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
+          <pose>0.201919 0.83459 0.031993 -1.57001 0.009104 0.000989</pose>
+          <velocity>-5e-06 2e-06 5.1e-05 -5.5e-05 -0.000176 7e-06</velocity>
+          <acceleration>0 0 0 -0 -0 -0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
@@ -1498,7 +1498,7 @@
     </state>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose>5.90207 -3.76628 7.38251 0 0.759254 2.46404</pose>
+        <pose>0.423822 -0.515568 3.09478 -0 1.40361 2.69561</pose>
         <view_controller>orbit</view_controller>
         <projection_type>perspective</projection_type>
       </camera>
