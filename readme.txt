@@ -14,7 +14,7 @@ Steps to Run:
 4. In the first terminal, run the following command to start the ROS core:
     roscore
 5. In the second terminal, navigate to the project directory and run the following command to launch the world in Gazebo:
-    roslaunch turtlebot3_debipkg turtlebot3_depiworld.launch
+    roslaunch turtlebot3_debipkg turtlebot3_debiworld.launch
 6. In the third terminal, navigate to the package directory and run the following command to start the navigation node:
     rosrun nav_node navigation_node.py
 7. The Turtlebot3 Waffle_pi robot will start moving the balls from one side of the playground to another.
