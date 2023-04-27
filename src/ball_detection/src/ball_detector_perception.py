@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 import rospy
 from sensor_msgs.msg import Image, LaserScan
 from cv_bridge import CvBridge
@@ -98,42 +98,50 @@ class BallDetector:
                     robot_yaw = math.atan2(2 * (self.odom_data.pose.pose.orientation.w * self.odom_data.pose.pose.orientation.z +
                                                 self.odom_data.pose.pose.orientation.x * self.odom_data.pose.pose.orientation.y),
                                             1 - 2 * (self.odom_data.pose.pose.orientation.y ** 2 + self.odom_data.pose.pose.orientation.z ** 2))
+                     # Calculate the position of the robot in the world frame
                     world_x = 0
                     world_y = 0
                     world_yaw = math.pi / 2
                     robot_world_x = robot_x * math.cos(world_yaw) + robot_y * math.sin(world_yaw) - world_x * math.cos(world_yaw) - world_y * math.sin(world_yaw)
-                    robot_world_y = -robot_x * math.sin(world_yaw) + robot_y * math.cos(world_yaw) + world_x * math.sin(world_yaw) - world_y * math.cos(world_yaw)
+                    robot_world_y = -robot_x * math.sin(world_yaw) + robot_y * math.cos(world_yaw) + world_x * math.sin(world_yaw) - world_y * math.cos(world_yaw)# Convert the range and bearing to the circle from the LIDAR readings to Cartesian coordinates
                     # Convert the range and bearing to the circle from the LIDAR readings to Cartesian coordinates
                     angle_increment = self.lidar_data.angle_increment
                     angle_min = self.lidar_data.angle_min
                     ranges = self.lidar_data.ranges
-                    # num_readings = len(ranges)
+                    # Calculate the position of the circle in the world frame
                     circle_angle = math.atan2(circle_robot_y, circle_robot_x)
                     circle_distance = math.sqrt(circle_robot_x ** 2 + circle_robot_y ** 2)
                     angle_index = int((circle_angle - angle_min) / angle_increment)
                     range_value = ranges[angle_index]
+                    
                     if range_value < circle_distance:
+                        # Calculate the position of the circle in the world frame
                         circle_world_x = robot_world_x + range_value * math.cos(circle_angle + robot_yaw)
                         circle_world_y = robot_world_y + range_value * math.sin(circle_angle + robot_yaw)
-                        print(f"Circle found at ({circle_world_x}, {circle_world_y})")
+                        circle_world_yaw = robot_yaw
+                        
+                        # Print the position of the circle in the world frame
+                        print(f"Circle found at ({circle_world_x}, {circle_world_y}, {circle_world_yaw})")
                     else:
                         print("Circle not found")
+
             else:
                 print("No circles detected")
         cv2.imshow('image', image)
         cv2.imshow('thresh', thresh)
         cv2.waitKey(1)
-        return(circle_world_x, circle_world_y)
+        return(circle_world_x+1, circle_world_y-1)
+        # return -0.346252, 0.847308
     def navigate_to_goal(self, tolerance=0.1):
         x, y = self.find_ball_coordinates()
-        if (x == 0) and (y == 0):
+        if (x == 1) and (y == -1):
             # No circles detected, perform search behavior rotate
             self.rot.angular.z = 0.4
             self.rot.linear.x = 0
         # Wait for the current pose to be initialized
         else :
-            # while self.current_pose is None:
-            #     rospy.sleep(0.01)
+            while self.current_pose is None:
+                rospy.sleep(0.001)
             # Start moving towards the goal position
             cmd_vel = Twist()
             rate = rospy.Rate(100) 
@@ -155,13 +163,13 @@ class BallDetector:
                 angle_error = self.clamp(final_calmp)
                 # Set the angular velocity proportional to the angle error
                 if np.abs(angle_error)>np.pi/12:
-                    cmd_vel.angular.z = 0.65 * angle_error
+                    cmd_vel.angular.z = 0.55 * angle_error
                     # Set the linear velocity proportional to the distance to the goal
                     cmd_vel.linear.x = 0
                     self.cmd_vel_pub.publish(cmd_vel)
                     # rate.sleep()
                     continue
-                cmd_vel.angular.z = 0.3 * angle_error
+                cmd_vel.angular.z = 0.25 * angle_error
                 # Set the linear velocity proportional to the distance to the goal
                 cmd_vel.linear.x = 0.35 * (distance+1)
                 # print(f"distance = ${distance}")
@@ -174,51 +182,6 @@ class BallDetector:
             cmd_vel.linear.x = 0.0
             cmd_vel.angular.z = 0.0
             self.cmd_vel_pub.publish(cmd_vel)
-    # def move_to_ball(self):
-    #     circles = self.find_ball()
-    # # Check if any circles were detected
-    #     if circles is None:
-    #         # No circles detected, perform search behavior
-    #         text = "searching"
-    #         self.rot.angular.z = 0.4
-    #         self.rot.linear.x = 0
-    #     else:
-    #         # Move towards closest circle   
-    #         text = ""
-    #         total_circles = len(circles[0])
-    #         print(total_circles)
-    #         closest_circle = None 
-    #         closest_dist = float('inf')
-    #         for i, circle in enumerate(circles[0]):
-    #             # Compute distance to circle
-    #             distance = math.sqrt((circle[0] - 320)**2 + (circle[1] - 240)**2)
-    #             if distance < closest_dist:
-    #                 closest_dist = distance
-    #                 closest_circle = circle
-    #         #Navigate to closest circle      
-    #         if closest_circle is not None:
-    #             for i, circle in enumerate(self.circles[0]):
-    #                 # Compute the distance and angle to the center of the circle
-    #                 cx, cy = int(circle[0]), int(circle[1])
-    #                 obj_x = cx - 320
-    #                 obj_y = cy - 240
-    #                 distance = math.sqrt(obj_x**2 + obj_y**2)
-    #                 angle = math.atan2(obj_y, obj_x)
-    #                 # Adjust the movement behavior based on the distance and angle to the circle
-    #                 if distance <= 30:
-    #                     # Move straight towards the circle
-    #                     text += f"Circle {i+1}: straight "
-    #                     self.rot.angular.z = 0
-    #                     self.rot.linear.x = 0.2 / total_circles
-    #                 else:
-    #                     # Turn towards the circle and move forward
-    #                     text += f"Circle {i+1}: turn "
-    #                     self.rot.angular.z = 0.5 * angle
-    #                     self.rot.linear.x = 0.2 / total_circles
-    #         # Print the movement behavior to the console
-    #             print(f"Moving: {text}")
-    #             # Publish the movement command
-    #             self.cmd_vel_pub.publish(self.rot)
     def run(self):
         rate = rospy.Rate(10)
         while not rospy.is_shutdown():
