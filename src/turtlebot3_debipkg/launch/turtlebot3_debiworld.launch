@@ -2,7 +2,7 @@
 
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find turtlebot3_debipkg)/worlds/tb3_manp.world"/>
+    <arg name="world_name" value="$(find turtlebot3_debipkg)/worlds/turtlebot3_debiworld.world"/>
 
   
   </include>
